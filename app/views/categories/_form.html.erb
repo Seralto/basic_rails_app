@@ -1,0 +1,17 @@
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div class="alert alert-danger">
+      <% @category.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+  </div>
+  <div class="actions">
+    <%= button_tag 'Save', class: 'btn btn-success'%>
+    <%= link_to 'Back', categories_path, class: 'btn btn-info' %>
+  </div>
+<% end %>

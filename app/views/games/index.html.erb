@@ -1,0 +1,30 @@
+<%= content_tag :p, notice, class: 'alert alert-success' if notice %>
+
+<h1>Listing Games</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>References</th>
+      <th colspan="2">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.name %></td>
+        <td><%= game.price %></td>
+        <td><%= game.category.try(:name) %></td>
+        <td width="65"><%= link_to 'Edit', edit_game_path(game), class: 'btn btn-sm btn-warning' %></td>
+        <td width="65"><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path, class: 'btn btn-success' %>
